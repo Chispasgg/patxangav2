@@ -1,8 +1,8 @@
 const CONFIG_PATH = "./config/config.json";
-const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 const titleNode = document.querySelector("#campaign-title");
 const descriptionNode = document.querySelector("#campaign-description");
+const itemDescriptionNode = document.querySelector("#item-description");
 const mediaContainerNode = document.querySelector("#media-container");
 const effectiveDateNode = document.querySelector("#effective-date");
 const contentNameNode = document.querySelector("#content-name");
@@ -30,7 +30,7 @@ function parseDateOnly(value, timeMode) {
   const [year, month, day] = value.split("-").map(Number);
 
   if (!year || !month || !day) {
-    throw new Error("startDate debe tener formato YYYY-MM-DD");
+    throw new Error("Las fechas deben tener formato YYYY-MM-DD");
   }
 
   if (timeMode === "local") {
@@ -40,22 +40,42 @@ function parseDateOnly(value, timeMode) {
   return new Date(Date.UTC(year, month - 1, day));
 }
 
-function getCurrentItem(config, now = new Date()) {
-  if (config.rotationMode !== "daily") {
-    throw new Error("Solo se soporta rotationMode=daily en esta versión");
+function matchesDatePattern(pattern, date, timeMode) {
+  const parts = pattern.split("-");
+
+  if (parts.length !== 3) {
+    throw new Error("Las fechas deben tener formato YYYY-MM-DD");
   }
 
-  if (!Array.isArray(config.items) || config.items.length === 0) {
-    throw new Error("La configuración debe incluir al menos un elemento en items");
+  const [yearPattern, monthPattern, dayPattern] = parts;
+  const yearValue = timeMode === "local" ? date.getFullYear() : date.getUTCFullYear();
+  const monthValue = String((timeMode === "local" ? date.getMonth() : date.getUTCMonth()) + 1).padStart(2, "0");
+  const dayValue = String(timeMode === "local" ? date.getDate() : date.getUTCDate()).padStart(2, "0");
+
+  const yearMatches = yearPattern === "YYYY" || yearPattern === String(yearValue);
+  const monthMatches = monthPattern === "MM" || monthPattern === monthValue;
+  const dayMatches = dayPattern === dayValue;
+
+  return yearMatches && monthMatches && dayMatches;
+}
+
+function getCurrentItem(config, now = new Date()) {
+  if (!config.defaultItem) {
+    throw new Error("La configuración debe incluir defaultItem");
   }
 
   const effectiveNow = startOfDay(now, config.timeMode);
-  const startDate = parseDateOnly(config.startDate, config.timeMode);
-  const diffDays = Math.floor((effectiveNow.getTime() - startDate.getTime()) / MS_PER_DAY);
-  const normalizedIndex = ((diffDays % config.items.length) + config.items.length) % config.items.length;
+  const datedItems = Array.isArray(config.items) ? config.items : [];
+  const matchingItem = datedItems.find((item) => {
+    if (!item.date) {
+      throw new Error("Cada elemento de items debe incluir una fecha en el campo date");
+    }
+
+    return matchesDatePattern(item.date, effectiveNow, config.timeMode);
+  });
 
   return {
-    item: config.items[normalizedIndex],
+    item: matchingItem || config.defaultItem,
     effectiveNow,
   };
 }
@@ -68,12 +88,30 @@ function formatEffectiveDate(date, timeMode) {
   return date.toISOString().slice(0, 10);
 }
 
+function resolveMediaSource(item, fallbackMimeType) {
+  if (typeof item.img === "string" && item.img.trim() !== "") {
+    const trimmedContent = item.img.trim();
+
+    if (trimmedContent.startsWith("data:")) {
+      return trimmedContent;
+    }
+
+    return `data:${item.mimeType || fallbackMimeType};base64,${trimmedContent}`;
+  }
+
+  if (typeof item.src === "string" && item.src.trim() !== "") {
+    return item.src;
+  }
+
+  throw new Error(`Los elementos de tipo ${item.type} deben incluir \`img\` en base64 o \`src\``);
+}
+
 function renderMedia(item) {
   mediaContainerNode.innerHTML = "";
 
   if (item.type === "image") {
     const image = document.createElement("img");
-    image.src = item.src;
+    image.src = resolveMediaSource(item, "image/jpeg");
     image.alt = item.alt || item.name || "Contenido del día";
     mediaContainerNode.appendChild(image);
     return;
@@ -90,7 +128,7 @@ function renderMedia(item) {
     video.setAttribute("aria-label", item.name || "Vídeo del día");
 
     const source = document.createElement("source");
-    source.src = item.src;
+    source.src = resolveMediaSource(item, "video/mp4");
     source.type = item.mimeType || "video/mp4";
 
     video.appendChild(source);
@@ -121,6 +159,7 @@ async function bootstrap() {
     document.title = config.pageTitle || "patxangav2";
     titleNode.textContent = config.title;
     descriptionNode.textContent = config.description;
+    itemDescriptionNode.textContent = item.description || "Sin descripción específica para este contenido.";
     effectiveDateNode.textContent = formatEffectiveDate(effectiveNow, config.timeMode);
     contentNameNode.textContent = item.name || item.src;
 
@@ -128,10 +167,10 @@ async function bootstrap() {
   } catch (error) {
     titleNode.textContent = "No se pudo cargar el contenido";
     descriptionNode.textContent = "Revisa la configuración o vuelve a intentarlo más tarde.";
+    itemDescriptionNode.textContent = "";
     mediaContainerNode.innerHTML = "";
     showError(error instanceof Error ? error.message : "Error desconocido");
   }
 }
 
 bootstrap();
-

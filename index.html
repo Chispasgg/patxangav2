@@ -3,32 +3,50 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>patxangav2</title>
+    <title>Patxanga v2</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
     <main class="page">
-      <section class="card">
-        <p class="eyebrow">QR rotativo</p>
-        <h1 id="campaign-title">Cargando contenido</h1>
-        <p id="campaign-description" class="description">
-          Espera mientras cargamos la configuración.
-        </p>
-        <div id="media-container" class="media-container" aria-live="polite"></div>
-        <dl class="meta">
+      <noscript>
+        <div class="card error">
+          Activa JavaScript para ver el contenido dinámico del QR.
+        </div>
+      </noscript>
+      <article class="card">
+        <header>
+          <p class="eyebrow">Patxanga Team</p>
+          <h1 id="campaign-title">Cargando contenido</h1>
+          <p id="campaign-description" class="description">
+            Estamos preparando la configuración del día para ti.
+          </p>
+          <p id="item-description" class="item-description">
+            Cargando descripción del contenido activo.
+          </p>
+        </header>
+        
+        <div id="media-container" class="media-container" aria-live="polite">
+          <div class="loader" id="loader"></div>
+        </div>
+        
+        <footer class="meta">
           <div>
-            <dt>Fecha efectiva</dt>
-            <dd id="effective-date">-</dd>
+            <dt>Fecha de hoy</dt>
+            <dd id="effective-date">...</dd>
           </div>
           <div>
-            <dt>Contenido activo</dt>
-            <dd id="content-name">-</dd>
+            <dt>Contenido Activo</dt>
+            <dd id="content-name">...</dd>
           </div>
-        </dl>
+        </footer>
+        
         <p id="error-message" class="error" hidden></p>
-      </section>
+      </article>
     </main>
     <script src="app.js" defer></script>
   </body>
 </html>
-
