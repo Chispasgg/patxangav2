@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Contenido A</title>
+  <desc id="desc">Ejemplo visual del primer día</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe0c2" />
+      <stop offset="100%" stop-color="#ff9461" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" rx="48" />
+  <circle cx="230" cy="230" r="110" fill="#fff6ee" opacity="0.7" />
+  <circle cx="960" cy="180" r="80" fill="#fff1d6" opacity="0.85" />
+  <text x="110" y="410" fill="#5a2100" font-family="Georgia, serif" font-size="82">Día A</text>
+  <text x="110" y="510" fill="#5a2100" font-family="Georgia, serif" font-size="44">Sustituye este archivo por tu imagen real.</text>
+  <text x="110" y="580" fill="#7a370f" font-family="Georgia, serif" font-size="30">Mantén el mismo QR, cambia solo la publicación.</text>
+</svg>
+

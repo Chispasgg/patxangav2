@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Contenido C</title>
+  <desc id="desc">Ejemplo visual del tercer día</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#cbf0d0" />
+      <stop offset="100%" stop-color="#68c28b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" rx="48" />
+  <circle cx="1000" cy="720" r="150" fill="#edfdf0" opacity="0.75" />
+  <circle cx="890" cy="170" r="55" fill="#effdf4" opacity="0.95" />
+  <text x="110" y="390" fill="#10411e" font-family="Georgia, serif" font-size="82">Día C</text>
+  <text x="110" y="490" fill="#10411e" font-family="Georgia, serif" font-size="44">Esta versión usa fecha UTC para que todos vean lo mismo.</text>
+  <text x="110" y="560" fill="#1e5c31" font-family="Georgia, serif" font-size="30">Cámbialo a `local` si prefieres depender del móvil del usuario.</text>
+</svg>

@@ -1,0 +1,29 @@
+{
+  "pageTitle": "Patxanga QR",
+  "title": "Patxanga rotativa",
+  "description": "La URL es siempre la misma. El contenido mostrado cambia automáticamente cada día según la configuración publicada.",
+  "rotationMode": "daily",
+  "timeMode": "utc",
+  "startDate": "2026-03-28",
+  "items": [
+    {
+      "name": "Cartel del día A",
+      "type": "image",
+      "src": "./assets/day-a.svg",
+      "alt": "Cartel A"
+    },
+    {
+      "name": "Cartel del día B",
+      "type": "image",
+      "src": "./assets/day-b.svg",
+      "alt": "Cartel B"
+    },
+    {
+      "name": "Cartel del día C",
+      "type": "image",
+      "src": "./assets/day-c.svg",
+      "alt": "Cartel C"
+    }
+  ]
+}
+
