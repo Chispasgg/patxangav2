@@ -1,4 +1,5 @@
 const CONFIG_PATH = "./config/config.json";
+const PHRASES_PATH = "./config/frases.json";
 
 const titleNode = document.querySelector("#campaign-title");
 const descriptionNode = document.querySelector("#campaign-description");
@@ -7,6 +8,10 @@ const mediaContainerNode = document.querySelector("#media-container");
 const effectiveDateNode = document.querySelector("#effective-date");
 const contentNameNode = document.querySelector("#content-name");
 const errorMessageNode = document.querySelector("#error-message");
+const randomPhraseButtonNode = document.querySelector("#random-phrase-button");
+const randomPhraseMessageNode = document.querySelector("#random-phrase-message");
+
+let availablePhrases = [];
 
 function showError(message) {
   errorMessageNode.hidden = false;
@@ -149,12 +154,61 @@ async function loadConfig() {
   return response.json();
 }
 
+async function loadPhrases() {
+  const response = await fetch(PHRASES_PATH, { cache: "no-store" });
+
+  if (!response.ok) {
+    throw new Error(`No se pudieron cargar las frases (${response.status})`);
+  }
+
+  const payload = await response.json();
+
+  if (!Array.isArray(payload.phrases)) {
+    throw new Error("El archivo de frases debe incluir una lista en `phrases`");
+  }
+
+  return payload.phrases.filter((phrase) => typeof phrase === "string" && phrase.trim() !== "");
+}
+
+function getRandomPhrase(phrases) {
+  if (phrases.length === 0) {
+    throw new Error("No hay frases disponibles");
+  }
+
+  const randomIndex = Math.floor(Math.random() * phrases.length);
+  return phrases[randomIndex];
+}
+
+function showRandomPhrase() {
+  const phrase = getRandomPhrase(availablePhrases);
+
+  randomPhraseMessageNode.hidden = false;
+  randomPhraseMessageNode.textContent = phrase;
+  window.alert(phrase);
+}
+
+function setupRandomPhraseButton() {
+  if (availablePhrases.length === 0) {
+    randomPhraseButtonNode.disabled = true;
+    randomPhraseMessageNode.hidden = false;
+    randomPhraseMessageNode.textContent = "No hay frases disponibles ahora mismo.";
+    return;
+  }
+
+  randomPhraseButtonNode.disabled = false;
+  randomPhraseButtonNode.addEventListener("click", showRandomPhrase);
+}
+
 async function bootstrap() {
   hideError();
 
   try {
-    const config = await loadConfig();
+    const [config, phrases] = await Promise.all([
+      loadConfig(),
+      loadPhrases().catch(() => []),
+    ]);
     const { item, effectiveNow } = getCurrentItem(config);
+    availablePhrases = phrases;
 
     document.title = config.pageTitle || "patxangav2";
     titleNode.textContent = config.title;
@@ -164,11 +218,13 @@ async function bootstrap() {
     contentNameNode.textContent = item.name || item.src;
 
     renderMedia(item);
+    setupRandomPhraseButton();
   } catch (error) {
     titleNode.textContent = "No se pudo cargar el contenido";
     descriptionNode.textContent = "Revisa la configuración o vuelve a intentarlo más tarde.";
     itemDescriptionNode.textContent = "";
     mediaContainerNode.innerHTML = "";
+    randomPhraseButtonNode.disabled = true;
     showError(error instanceof Error ? error.message : "Error desconocido");
   }
 }

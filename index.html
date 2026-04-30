@@ -45,12 +45,20 @@
         </footer>
 
         <aside class="visit-counter" aria-label="Contador de visitas">
-          <span class="visit-counter-label">Visits counter</span>
-          <img
-            class="visit-counter-badge"
-            src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fchispasgg.github.io%2Fpatxangav2%2F&label=&icon=award&color=%2313ff00&message=&style=plastic&tz=UTC"
-            alt="Visits Counter"
-          />
+          <div class="visit-counter-top">
+            <div class="visit-counter-stats">
+              <span class="visit-counter-label">Visitas realizadas</span>
+              <img
+                class="visit-counter-badge"
+                src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fchispasgg.github.io%2Fpatxangav2%2F&label=&icon=award&color=%2313ff00&message=&style=plastic&tz=UTC"
+                alt="Contador de visitas"
+              />
+            </div>
+            <button id="random-phrase-button" class="phrase-button" type="button">
+              Frase aleatoria
+            </button>
+          </div>
+          <p id="random-phrase-message" class="phrase-message" hidden></p>
         </aside>
         
         <p id="error-message" class="error" hidden></p>

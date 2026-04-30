@@ -36,8 +36,9 @@ body {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: stretch;
   gap: 8px;
+  min-width: 320px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(5, 5, 5, 0.82);
@@ -45,7 +46,20 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.visit-counter-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.visit-counter-stats {
+  min-width: 0;
+}
+
 .visit-counter-label {
+  display: block;
+  margin-bottom: 6px;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -56,6 +70,43 @@ body {
 .visit-counter-badge {
   display: block;
   height: 28px;
+}
+
+.phrase-button {
+  border: 1px solid var(--accent-red);
+  background: transparent;
+  color: var(--text-white);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.phrase-button:hover:not(:disabled),
+.phrase-button:focus-visible:not(:disabled) {
+  background: var(--accent-red);
+  color: var(--bg-black);
+  transform: translateY(-1px);
+}
+
+.phrase-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.phrase-message {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent-red);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-white);
+  font-size: 0.92rem;
+  line-height: 1.4;
 }
 
 .page {
@@ -186,7 +237,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2px; /* Espacio mínimo para que parezca una rejilla técnica */
-  margin: 40px 0 96px;
+  margin: 40px 0 152px;
   padding: 0;
   background: var(--accent-red);
   border: 1px solid var(--accent-red);
@@ -236,11 +287,22 @@ h1 {
   .visit-counter {
     right: 16px;
     bottom: 16px;
+    left: 16px;
+    min-width: auto;
     padding: 10px 12px;
+  }
+
+  .visit-counter-top {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .visit-counter-badge {
     height: 24px;
+  }
+
+  .phrase-button {
+    width: 100%;
   }
 
   .card {
