@@ -29,6 +29,35 @@ body {
   overflow-x: hidden;
 }
 
+.visit-counter {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(5, 5, 5, 0.82);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.visit-counter-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-gray);
+}
+
+.visit-counter-badge {
+  display: block;
+  height: 28px;
+}
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -157,7 +186,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2px; /* Espacio mínimo para que parezca una rejilla técnica */
-  margin: 40px 0 0;
+  margin: 40px 0 96px;
   padding: 0;
   background: var(--accent-red);
   border: 1px solid var(--accent-red);
@@ -204,6 +233,16 @@ h1 {
 }
 
 @media (max-width: 640px) {
+  .visit-counter {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 12px;
+  }
+
+  .visit-counter-badge {
+    height: 24px;
+  }
+
   .card {
     padding: 30px 20px;
   }
