@@ -17,401 +17,337 @@
       "name": "Intro 1",
       "description": "Que miedo me da esto",
       "src": "https://www.youtube.com/watch?v=OWJSXLZYtVY",
-      "startDate": "2026-05-24 03:00",
-      "endDate": "2026-05-24 03:02"
+      "startDate": "2026-05-25 03:00",
+      "endDate": "2026-05-25 04:00"
     },
     {
       "type": "youtube",
       "name": "Intro 2",
       "description": "Que miedo me da esto",
       "src": "https://www.youtube.com/watch?v=cjNQNZjEf40",
-      "startDate": "2026-05-24 03:02",
-      "endDate": "2026-05-24 03:03"
+      "startDate": "2026-05-24 03:00",
+      "endDate": "2026-05-24 04:00"
     },
     {
-      "startDate": "2026-05-24",
+      "startDate": "2026-06-05",
       "endDate": "2026-06-14",
       "images": [
         {
-          "date": "2026-05-25",
           "name": "10042010045",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2026-05-24",
           "name": "13012009132",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2008-08-01",
           "name": "2008_agosto",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2026-05-24",
           "name": "2008_agosto_2",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2026-05-24",
           "name": "2008_agosto_3",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2008-08-04",
           "name": "2008_agosto_4",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2008-06-01",
           "name": "2008_junio",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2008-05-01",
           "name": "2008_mayo",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2008-05-02",
           "name": "2008_mayo_2",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2008-05-03",
           "name": "2008_mayo_3",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2009-10-01",
           "name": "2009_octubre",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2009-09-01",
           "name": "2009_septiembre",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-17",
           "name": "2010-04-17 15-18-29",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-05-01",
           "name": "2010-05-01 16-34-58",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-01",
           "name": "2010_abril",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-10",
           "name": "2010_abril_10",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-11",
           "name": "2010_abril_11",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-02",
           "name": "2010_abril_2",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-03",
           "name": "2010_abril_3",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-04",
           "name": "2010_abril_4",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-05",
           "name": "2010_abril_5",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-06",
           "name": "2010_abril_6",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-07",
           "name": "2010_abril_7",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-08",
           "name": "2010_abril_8",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-04-09",
           "name": "2010_abril_9",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-08-01",
           "name": "2010_agosto",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-08-02",
           "name": "2010_agosto_2",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-08-03",
           "name": "2010_agosto_3",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-08-04",
           "name": "2010_agosto_4",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-08-05",
           "name": "2010_agosto_5",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-08-06",
           "name": "2010_agosto_6",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-08-07",
           "name": "2010_agosto_7",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-03-01",
           "name": "2010_marzo",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-03-02",
           "name": "2010_marzo_2",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2011-01-03",
           "name": "2011-01-03 16-43-37",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2011-02-01",
           "name": "2011_febrero",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2019-03-08",
           "name": "20190308_132909",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2019-03-13",
           "name": "20190313_215705",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2019-03-15",
           "name": "20190315_142855",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2010-01-27",
           "name": "27012010017",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG0129",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG0318",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG0446",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG0621",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG0782",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG0823",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG1133",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG1242",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG1911",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG5776",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "CIMG5875",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC03161",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC03222",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC04084",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC04143",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC04365",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC04471",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC04801",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC_1005",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "DSC_1006",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "ESIDE203",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2019-03-18",
           "name": "IMG-20190318-WA0007",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2019-03-19",
           "name": "IMG-20190319-WA0007",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2019-05-11",
           "name": "IMG-20190511-WA0012",
           "type": "image",
           "mimeType": "image/jpeg"
@@ -441,7 +377,6 @@
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "IMG_0051",
           "type": "image",
           "mimeType": "image/jpeg"
@@ -459,109 +394,91 @@
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2025-01-26",
           "name": "IMG_20250126_013520",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "IMG_3856",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "2019-03-11",
           "name": "JEXY_110319-121611",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "Mexico19_JS (71)",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1000789",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1000808",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1010037",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1010330",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1010346",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1010524",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1010587",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1010793",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1020011",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1020301",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1020378",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1020501",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1080873",
           "type": "image",
           "mimeType": "image/jpeg"
         },
         {
-          "date": "YYYY-MM-DD",
           "name": "P1080902",
           "type": "image",
           "mimeType": "image/jpeg"
