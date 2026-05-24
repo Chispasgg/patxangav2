@@ -219,10 +219,6 @@ h1 {
   animation: none; /* Estática al 99% o podemos hacer un pulso */
 }
 
-@keyframes rotation {
-  /* Sobrescribimos el anterior si era circular, pero aquí usaremos la barra */
-}
-
 .media-container img,
 .media-container video {
   display: block;
@@ -231,6 +227,13 @@ h1 {
   max-height: 70vh;
   object-fit: contain;
   filter: contrast(1.1) brightness(1.1);
+}
+
+.youtube-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
 }
 
 .meta {
@@ -276,11 +279,6 @@ h1 {
   background: rgba(255, 0, 0, 0.1);
   text-transform: uppercase;
   font-weight: bold;
-}
-
-/* Blobs rojos agresivos en lugar de suaves */
-.bg-blobs {
-  display: none; /* Quitamos los suaves para usar el gradiente del body */
 }
 
 @media (max-width: 640px) {
