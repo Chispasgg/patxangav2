@@ -1,5 +1,6 @@
 const CONFIG_PATH = "./config/config.json";
 const PHRASES_PATH = "./config/frases.json";
+const PRUEBAS_PATH = "./config/pruebas.json";
 
 const titleNode = document.querySelector("#campaign-title");
 const descriptionNode = document.querySelector("#campaign-description");
@@ -14,6 +15,7 @@ const randomPhraseMessageNode = document.querySelector(
 );
 
 let availablePhrases = [];
+let availablePruebas = [];
 
 function showError(message) {
   errorMessageNode.hidden = false;
@@ -122,17 +124,21 @@ function getCurrentItem(config, now = new Date()) {
       }
       if (Array.isArray(item.images) && item.images.length > 0) {
         const randomIndex = Math.floor(Math.random() * item.images.length);
-        return { item: item.images[randomIndex], effectiveNow };
+        return {
+          item: item.images[randomIndex],
+          effectiveNow,
+          isDefault: false,
+        };
       }
       if (item.type) {
-        return { item, effectiveNow };
+        return { item, effectiveNow, isDefault: false };
       }
       throw new Error(
         "Los elementos con rango de fechas deben incluir `images` o un campo `type`",
       );
     } else if (item.date) {
       if (matchesDatePattern(item.date, effectiveNow, config.timeMode)) {
-        return { item, effectiveNow };
+        return { item, effectiveNow, isDefault: false };
       }
     } else {
       throw new Error(
@@ -141,7 +147,7 @@ function getCurrentItem(config, now = new Date()) {
     }
   }
 
-  return { item: config.defaultItem, effectiveNow };
+  return { item: config.defaultItem, effectiveNow, isDefault: true };
 }
 
 function formatEffectiveDate(date, timeMode) {
@@ -302,6 +308,53 @@ function showRandomPhrase() {
   window.alert(phrase);
 }
 
+async function sendNtfyMessage(url, text) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain" },
+    body: text,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error al enviar (${response.status})`);
+  }
+}
+
+function setupMessagePanel(ntfyUrl) {
+  const inputNode = document.querySelector("#message-input");
+  const buttonNode = document.querySelector("#message-send-button");
+  const feedbackNode = document.querySelector("#message-feedback");
+
+  if (!ntfyUrl) {
+    buttonNode.disabled = true;
+    return;
+  }
+
+  buttonNode.addEventListener("click", async () => {
+    const text = inputNode.value.trim();
+    if (!text) return;
+
+    buttonNode.disabled = true;
+    buttonNode.textContent = "Enviando...";
+    feedbackNode.hidden = true;
+
+    try {
+      await sendNtfyMessage(ntfyUrl, text);
+      inputNode.value = "";
+      feedbackNode.className = "message-feedback message-feedback--ok";
+      feedbackNode.textContent = "Msg sent.";
+    } catch (error) {
+      feedbackNode.className = "message-feedback message-feedback--error";
+      feedbackNode.textContent =
+        error instanceof Error ? error.message : "Error desconocido";
+    } finally {
+      feedbackNode.hidden = false;
+      buttonNode.disabled = false;
+      buttonNode.textContent = "Enviar";
+    }
+  });
+}
+
 function setupRandomPhraseButton() {
   if (availablePhrases.length === 0) {
     randomPhraseButtonNode.disabled = true;
@@ -315,17 +368,68 @@ function setupRandomPhraseButton() {
   randomPhraseButtonNode.addEventListener("click", showRandomPhrase);
 }
 
+async function loadPruebas() {
+  const response = await fetch(PRUEBAS_PATH, { cache: "no-store" });
+
+  if (!response.ok) {
+    throw new Error(`No se pudieron cargar las pruebas (${response.status})`);
+  }
+
+  const payload = await response.json();
+
+  if (!Array.isArray(payload.phrases)) {
+    throw new Error(
+      "El archivo de pruebas debe incluir una lista en `phrases`",
+    );
+  }
+
+  return payload.phrases.filter(
+    (p) => typeof p === "string" && p.trim() !== "",
+  );
+}
+
+function setupRuletaButton() {
+  const buttonNode = document.querySelector("#ruleta-button");
+  const messageNode = document.querySelector("#ruleta-message");
+
+  if (availablePruebas.length === 0) {
+    buttonNode.disabled = true;
+    messageNode.hidden = false;
+    messageNode.textContent = "No hay pruebas disponibles ahora mismo.";
+    return;
+  }
+
+  buttonNode.disabled = false;
+  buttonNode.addEventListener("click", () => {
+    const result =
+      availablePruebas[Math.floor(Math.random() * availablePruebas.length)];
+
+    buttonNode.disabled = true;
+    buttonNode.classList.add("ruleta-button--spinning");
+    messageNode.hidden = true;
+
+    setTimeout(() => {
+      buttonNode.classList.remove("ruleta-button--spinning");
+      buttonNode.disabled = false;
+      messageNode.hidden = false;
+      messageNode.textContent = result;
+    }, 10000);
+  });
+}
+
 async function bootstrap() {
   hideError();
 
   try {
-    const [config, phrases] = await Promise.all([
+    const [config, phrases, pruebas] = await Promise.all([
       loadConfig(),
       loadPhrases().catch(() => []),
+      loadPruebas().catch(() => []),
     ]);
-    const { item, effectiveNow } = getCurrentItem(config);
+    const { item, effectiveNow, isDefault } = getCurrentItem(config);
     await loadMediaForItem(item);
     availablePhrases = phrases;
+    availablePruebas = pruebas;
 
     document.title = config.pageTitle || "patxangav2";
     titleNode.textContent = config.title;
@@ -339,7 +443,16 @@ async function bootstrap() {
     contentNameNode.textContent = item.name || item.src;
 
     renderMedia(item);
-    setupRandomPhraseButton();
+
+    if (!isDefault) {
+      setupRandomPhraseButton();
+      setupRuletaButton();
+      setupMessagePanel(config.ntfyUrl);
+    } else {
+      document.querySelector("#random-phrase-button").disabled = true;
+      document.querySelector("#ruleta-button").disabled = true;
+      document.querySelector("#message-send-button").disabled = true;
+    }
   } catch (error) {
     titleNode.textContent = "No se pudo cargar el contenido";
     descriptionNode.textContent =

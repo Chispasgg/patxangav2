@@ -30,20 +30,15 @@ body {
 }
 
 .visit-counter {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
-  min-width: 320px;
+  margin-top: 24px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(5, 5, 5, 0.82);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
 }
 
 .visit-counter-top {
@@ -240,7 +235,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2px; /* Espacio mínimo para que parezca una rejilla técnica */
-  margin: 40px 0 152px;
+  margin: 40px 0;
   padding: 0;
   background: var(--accent-red);
   border: 1px solid var(--accent-red);
@@ -271,6 +266,171 @@ h1 {
   color: var(--text-white);
 }
 
+.ruleta-panel {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ruleta-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.ruleta-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-gray);
+}
+
+.ruleta-button {
+  border: 2px solid var(--accent-red);
+  background: transparent;
+  color: var(--text-white);
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ruleta-button svg {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes ruleta-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.ruleta-button--spinning svg {
+  animation: ruleta-spin 0.8s linear infinite;
+  transition: none;
+}
+
+.ruleta-button:hover:not(:disabled),
+.ruleta-button:focus-visible:not(:disabled) {
+  background: rgba(255, 0, 0, 0.12);
+  box-shadow: 0 0 24px rgba(255, 0, 0, 0.5);
+}
+
+.ruleta-button:not(:disabled):active svg {
+  transform: rotate(540deg);
+}
+
+.ruleta-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ruleta-message {
+  width: 100%;
+  margin: 0;
+  padding: 20px 24px;
+  border: 1px solid var(--accent-red);
+  border-left: 4px solid var(--accent-red);
+  background: rgba(255, 0, 0, 0.06);
+  color: var(--text-white);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.message-panel {
+  margin-top: 24px;
+}
+
+.message-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.message-controls {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.message-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-white);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 10px 12px;
+  resize: vertical;
+  min-height: 64px;
+}
+
+.message-input::placeholder {
+  color: var(--text-gray);
+  opacity: 0.6;
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: var(--accent-red);
+}
+
+.message-send-button {
+  border: 1px solid var(--accent-red);
+  background: transparent;
+  color: var(--text-white);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.message-send-button:hover:not(:disabled),
+.message-send-button:focus-visible:not(:disabled) {
+  background: var(--accent-red);
+  color: var(--bg-black);
+}
+
+.message-send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message-feedback {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-left: 3px solid;
+}
+
+.message-feedback--ok {
+  border-color: #13ff00;
+  color: #13ff00;
+}
+
+.message-feedback--error {
+  border-color: var(--accent-red);
+  color: var(--text-white);
+  background: rgba(255, 0, 0, 0.1);
+}
+
 .error {
   margin-top: 30px;
   padding: 15px 20px;
@@ -283,9 +443,6 @@ h1 {
 
 @media (max-width: 640px) {
   .visit-counter {
-    right: 16px;
-    bottom: 16px;
-    left: 16px;
     min-width: auto;
     padding: 10px 12px;
   }
