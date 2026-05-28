@@ -1,14 +1,21 @@
 {
   "phrases": [
-    "Prueba 1: ",
-    "Prueba 2: ",
-    "Prueba 3: ",
-    "Prueba 4: ",
-    "Prueba 5: ",
-    "Prueba 6: ",
-    "Prueba 7: ",
-    "Prueba 8: ",
-    "Prueba 9: ",
-    "Prueba 10: "
+    "Ruleta del chupito: El novio y el más pequeño de beben. Cada uno elije el chupito del otro",
+    "Ruleta del chupito: El novio y el más alto de beben. El mas pequeño elije el chupito de ambos",
+    "Ruleta del chupito: El novio y la autoridad beben. Elegir una persona random para elegir ambos chupitos",
+    "Ruleta del chupito: El novio y los verdes electricos beben. El resto del grupo elije el chupito de cada uno",
+    "Ruleta del chupito: El novio y el que tenga, al menos, un coche de carreras beben. Elije los chupitos el ultimo que ha bebido",
+    "Ruleta del chupito: Si el novio no ha bebido en la anterior, bebe ahora y el resto del grupo bebe. El chupito lo elije el barman",
+    "Quién es más probable: lanzar una pregunta, ejemplo ¿Quién es más probable que se duerma en mitad de una fiesta?, Si todos apuntan al mismo, el novio y esa persona bebe, si no, el que menos votos tenga o ningun voto bebe.",
+    "Regla de la bebida: El novio elije una regla que solo tenga 3 palabras que no se haya puesto antes. Esta regla estara vigente durante 3 turnos. Si no consigue ninguna, El novio bebe.",
+    "Todos beben",
+    "Todos beben, el ultimo, bebe otra vez",
+    "Al que le ha salido esto, bebe",
+    "Tu, el de tu derecha y el de tu izquierda beben",
+    "Bebe todos menos tú",
+    "Si estas casado bebes, si tienes niños o niñas bebes, si no tienes nada de eso, bebes el doble",
+    "Busca una persona de tu sexo opuesto y preguntale como se llama, si no te lo dice, bebes, si te lo dice, ahora ese es tu nombre.",
+    "Si tu nombre tiene una letra A, bebes, si tiene una letra e bebes y si tiene una letra o bebes",
+    "El que salga en la foto de arriba, bebe"
   ]
 }
