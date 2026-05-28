@@ -413,7 +413,7 @@ function setupRuletaButton() {
       buttonNode.disabled = false;
       messageNode.hidden = false;
       messageNode.textContent = result;
-    }, 10000);
+    }, 6000);
   });
 }
 
