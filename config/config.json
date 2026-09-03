@@ -15,6 +15,14 @@
   "items": [
     {
       "type": "youtube",
+      "name": "Patxanga Season II",
+      "description": "Sunny Group",
+      "src": "https://www.youtube.com/watch?v=tGhI_mxOIck",
+      "startDate": "2026-09-05 15:00",
+      "endDate": "2026-09-05 23:59"
+    },
+    {
+      "type": "youtube",
       "name": "Intro 1",
       "description": "Que miedo me da esto",
       "src": "https://www.youtube.com/watch?v=OWJSXLZYtVY",
